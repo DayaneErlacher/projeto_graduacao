@@ -1,14 +1,14 @@
-const express    = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
-const config     = require('config');
+const port = require('config').get('server.port');
 
 module.exports = () => {
   const app = express();
   const cors = require("cors");
-  
+
   // SETANDO VARIÁVEIS DA APLICAÇÃO
-  app.set('port', process.env.PORT || config.get('server.port'));
-  
+  app.set('port', process.env.PORT || port);
+
   // MIDDLEWARE TO ENABLE CORS
   app.use(cors());
 

@@ -1,22 +1,21 @@
-// https://localhost:8080
-const fs = require("fs");
-const https = require("https");
 const express = require("express");
-  // module.exports = () => {
+const bodyParser = require('body-parser');
+const port = require('config').get('server.port');
+
+
+module.exports = () => {
   const app = express();
-  app.get("/", (req, res) => {
-    res.send("Hello world using HTTPS!");
-  });
-  
-  // Carrega o certificado e a key necessários para a configuração.
-  const options = {
-    key: fs.readFileSync('./keys/key.pem'),
-    cert: fs.readFileSync('./keys/cert.pem')
-  };
-  
-  // Cria a instância do server e escuta na porta
-  https.createServer(options, app).listen(8080);
-  //   return app;
-  // };
+
+  // SETANDO VARIÁVEIS DA APLICAÇÃO
+  app.set('port', process.env.PORT || port);
+
+  // MIDDLEWARES
+  app.use(bodyParser.json());
+
+  // TEMOS APENAS UM CAMINHO // APLICAÇÃO SIMPLES
+  require('../api/routes/users.routes')(app);
+
+  return app;
+};
 
 
