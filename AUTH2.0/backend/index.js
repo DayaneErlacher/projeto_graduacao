@@ -1,3 +1,4 @@
+// Código baseado em https://blog.logrocket.com/implement-oauth-2-0-node-js/
 // Database imports
 const pgPool = require("./db/pgWrapper");
 const tokenDB = require("./db/tokenDB")(pgPool);

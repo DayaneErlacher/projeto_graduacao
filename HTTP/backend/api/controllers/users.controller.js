@@ -19,7 +19,7 @@ module.exports = () => {
 
    controller.getAll = async function (req, res) {
       userService.getAll()
-      .then(data => {res.status(200).json(data)})
+      .then(data => {console.log("chega"); res.status(200).json(data)})
       .catch(err => {res.status(400).json(err)});
    };
 
