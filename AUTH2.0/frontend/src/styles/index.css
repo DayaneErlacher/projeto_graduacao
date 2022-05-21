@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+  /* cursor: none; */
+}
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  --webkit-font-smoothing: antialiased !important;
+}
+body,
+button {
+  font-size: 14px;
+  font-family: 'Raleway', 'Roboto', sans-serif;
+}
+button {
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

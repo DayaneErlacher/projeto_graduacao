@@ -1,0 +1,45 @@
+.input-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.input-container input {
+  margin-left: 16px;
+  max-width: 100%;
+  min-width: 300px;
+  padding: 4px;
+  color: #000;
+  padding: 10px;
+
+  font-size: 1.2em;
+  border-radius: 3px;
+  border: none;
+}
+
+.input-container label {
+  color: #fff;
+  margin-right: auto;
+  font-weight: bold;
+}
+
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+  background-color: #9b9b9b;
+  color: #bebebe;
+}
+
+.qlSAn {
+  background: #13415f !important;
+  padding: 15px !important;
+}
+
+.MuiPaper-elevation1{
+  width: 400px !important;
+  height: 500px !important;
+  font-size: 25px !important;    
+}
