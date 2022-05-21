@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <>
-    <Navbar titulo = "HTTP" />
+    <Navbar titulo = "GATEWAY" />
     <Users values = {user} ></Users>
     </>
   );
