@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const { postgre } = require("../data/postgre");
+const { postgre } = require("../db/database");
 
 module.exports = {
     getAll: function () {
