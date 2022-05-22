@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,6 +50,8 @@ export default function Users(props) {
             <StyledTableCell align="right">Nome</StyledTableCell>
             <StyledTableCell align="right">Idade</StyledTableCell>
             <StyledTableCell align="right">Endereço</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -59,6 +63,14 @@ export default function Users(props) {
               <StyledTableCell align="right">{props.values[keyName].name}</StyledTableCell>
               <StyledTableCell align="right">{props.values[keyName].age}</StyledTableCell>
               <StyledTableCell align="right">{props.values[keyName].address}</StyledTableCell>
+              <StyledTableCell align="right">
+                <button onClick={() => props.edit(props.values[keyName])} ><FaEdit /></button>
+              </StyledTableCell>
+              <StyledTableCell align="right">
+
+                <button onClick={() => props.delete(props.values[keyName].id)}><FaTrashAlt /></button>
+              </StyledTableCell>
+
             </StyledTableRow>
           ))} 
         </TableBody>

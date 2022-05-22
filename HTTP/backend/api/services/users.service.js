@@ -15,7 +15,7 @@ module.exports = {
             });
         })
     },
-    getById: function(id) {
+    getUser: function(id) {
         const client = new Client(postgre)
         return new Promise((resolve, reject) => {
             client.connect(function (err) {
