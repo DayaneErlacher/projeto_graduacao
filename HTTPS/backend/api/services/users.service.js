@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const { postgre } = require("../data/postgre");
+const { postgre } = require("../db/database");
 
 module.exports = {
     getAll: function () {
@@ -15,7 +15,7 @@ module.exports = {
             });
         })
     },
-    getById: function(id) {
+    getUser: function(id) {
         const client = new Client(postgre)
         return new Promise((resolve, reject) => {
             client.connect(function (err) {
