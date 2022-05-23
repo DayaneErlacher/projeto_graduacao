@@ -1,67 +1,74 @@
 import axios from 'axios';
 import qs from 'qs';
+var data = qs.stringify({
+  'username': 'test',
+  'password': 'test',
+  'grant_type': 'password',
+  'client_id': 'null',
+  'client_secret': 'null'
+});
 
-//REGISTER
-const addUser = () => {
-    var data = qs.stringify({
-      'username': 'test3',
-      'password': 'test3',
-      'grant_type': 'password',
-      'client_id': 'null',
-      'client_secret': 'null' 
-    });
-    var config = {
+// const registerUser = (data) => {
+//   var config = {
+//     method: 'post',
+//     url: '/auth/login',
+//     headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     data: data
+// };
+//   return new Promise((resolve, reject) => {
+//   axios(config)
+//       .then(function (response) {
+//           config.url = '/api/users';
+//           config.headers.Authorization = 'Bearer ' + response.data.access_token;
+//           config.data = data;
+//           axios(config)
+//           .then(function (response) {
+//               resolve(JSON.stringify(response.data))
+//           })
+//           .catch(function (error) {
+//               reject(error);
+//           });
+//       })
+//       .catch(function (error) {
+//           reject(error);
+//       });
+//   })
+
+// }
+
+const getAllUser = () => {
+  var config = {
       method: 'post',
-      url: '/auth/register',
-      headers: { 
-        'Content-Type': 'application/x-www-form-urlencoded'
+      url: '/auth/login',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
       },
-      data : data
-    };
-    axios(config)
-    .then(function (response) {
-      return null;
-    })
-    .catch(function (error) {
-      return error;
-    });
-
-}
-
-const getUsers = () => {
-    var data = qs.stringify({
-        'username': 'test',
-        'password': 'test',
-        'grant_type': 'password',
-        'client_id': 'null',
-        'client_secret': 'null'
-    });
-    var config = {
-        method: 'post',
-        url: '/auth/login',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data: data
-    };
+      data: data
+  };
+    return new Promise((resolve, reject) => {
     axios(config)
         .then(function (response) {
-            config.url = '/test/hello';
+            config.url = '/api/users';
+            config.method = 'get';
             config.headers.Authorization = 'Bearer ' + response.data.access_token;
             axios(config)
             .then(function (response) {
-                console.log(JSON.stringify(response.data))
+                resolve(JSON.stringify(response.data))
             })
             .catch(function (error) {
-                console.log(error);
+                reject(error);
             });
         })
         .catch(function (error) {
-            console.log(error);
+            reject(error);
         });
-    return false;
+    })
 }
+const registerUser = () => { }
+const updateUser = () => { }
+const deleteUser = () => { }
+const getByIdUser = () => { }
 
-export { 
-    addUser, 
-    getUsers }
+export { getAllUser, registerUser, updateUser, deleteUser, getByIdUser };

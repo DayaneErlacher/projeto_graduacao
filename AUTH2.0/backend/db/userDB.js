@@ -4,7 +4,6 @@ module.exports = (injectedPgPool) => {
     pgPool = injectedPgPool;
 
     return {
-        register,
         getUser,
         isValidUser,
     };
@@ -12,13 +11,13 @@ module.exports = (injectedPgPool) => {
 
 var crypto = require("crypto");
 
-function register(username, password, cbFunc) {
-    var shaPass = crypto.createHash("sha256").update(password).digest("hex");
+// function register(username, password, cbFunc) {
+//     var shaPass = crypto.createHash("sha256").update(password).digest("hex");
 
-    const query = `INSERT INTO users (username, user_password) VALUES ('${username}', '${shaPass}')`;
+//     const query = `INSERT INTO users (username, user_password) VALUES ('${username}', '${shaPass}')`;
 
-    pgPool.query(query, cbFunc);
-}
+//     pgPool.query(query, cbFunc);
+// }
 
 function getUser(username, password, cbFunc) {
     var shaPass = crypto.createHash("sha256").update(password).digest("hex");

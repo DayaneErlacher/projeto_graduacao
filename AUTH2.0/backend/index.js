@@ -14,11 +14,9 @@ app.oauth = oAuth2Server({
     grants: ["password"],
     debug: true,
 });
-const testAPIService = require("./test/testAPIService.js");
-const testAPIRoutes = require("./test/testAPIRoutes.js")(
+const userAPIRoutes = require("./api/routes/users.routes")(
     express.Router(),
-    app,
-    testAPIService
+    app
 );
 // Auth and routes
 const authenticator = require("./auth/authenticator")(userDB);
@@ -31,7 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(app.oauth.errorHandler());
 app.use("/auth", routes);
-app.use("/test", testAPIRoutes);
+app.use("/api", userAPIRoutes);
 const port = 8080;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
