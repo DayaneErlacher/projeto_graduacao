@@ -7,6 +7,7 @@ const userDB = require("./db/userDB")(pgPool);
 const oAuthService = require("./auth/tokenService")(userDB, tokenDB);
 const oAuth2Server = require("node-oauth2-server");
 // Express
+const port = require('config').get('server.port');
 const express = require("express");
 const app = express();
 app.oauth = oAuth2Server({
@@ -30,7 +31,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(app.oauth.errorHandler());
 app.use("/auth", routes);
 app.use("/api", userAPIRoutes);
-const port = 8080;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
