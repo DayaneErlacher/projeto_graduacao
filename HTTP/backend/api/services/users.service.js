@@ -1,6 +1,5 @@
 const { Client } = require('pg');
 const { postgre } = require("../db/database");
-
 module.exports = {
     getAll: function () {
         const client = new Client(postgre)
@@ -33,8 +32,8 @@ module.exports = {
         return new Promise((resolve, reject) => {
             client.connect(function (err) {
                 if (err) reject(err);
-                client.query(`INSERT INTO users(name, age, address, cpf) 
-                VALUES('${user.name}', ${user.age}, '${user.address}', '${user.cpf}')`, (err, res) => {
+                client.query(`INSERT INTO users(username, user_password, age, address, cpf) 
+                VALUES('${user.username}', '${user.user_password}',  ${user.age}, '${user.address}', '${user.cpf}')`, (err, res) => {
                     if (err) reject(err);
                     client.end()
                     resolve(true);
@@ -60,7 +59,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             client.connect(function (err) {
                 if (err) reject(err);
-                client.query(`UPDATE users SET name = '${user.name}', age = ${user.age}, address = '${user.address}', cpf = '${user.cpf}' WHERE id = ${user.id}`, (err, res) => {
+                client.query(`UPDATE users SET username = '${user.username}', user_password = '${user.user_password}', age = ${user.age}, address = '${user.address}', cpf = '${user.cpf}' WHERE id = ${user.id}`, (err, res) => {
                     if (err) reject(err);
                     client.end()
                     resolve(true);

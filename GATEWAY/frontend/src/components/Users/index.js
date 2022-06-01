@@ -31,9 +31,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export class User {
-  constructor(id, name, age, address, cpf) {
+  constructor(id, username, user_password, age, address, cpf) {
     this.id = id;
-    this.name = name;
+    this.username = username;
+    this.user_password = user_password;
     this.age = age;
     this.address = address;
     this.cpf = cpf;
@@ -60,7 +61,7 @@ export default function Users(props) {
               <StyledTableCell component="th" scope="row">
                 {props.values[keyName].id}
               </StyledTableCell>
-              <StyledTableCell align="right">{props.values[keyName].name}</StyledTableCell>
+              <StyledTableCell align="right">{props.values[keyName].username}</StyledTableCell>
               <StyledTableCell align="right">{props.values[keyName].age}</StyledTableCell>
               <StyledTableCell align="right">{props.values[keyName].address}</StyledTableCell>
               <StyledTableCell align="right">

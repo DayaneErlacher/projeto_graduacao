@@ -1,9 +1,9 @@
 const postgre = {
     host: 'localhost',
     port: 5432,
-    database: 'pg',
-    user: 'pguser',
-    password: 'e=G*g#n2bFQx^YAy',
+    database: 'database_pg',
+    user: 'client',
+    password: 'Y9!AH&pez1@nnyZD',
 }
 
 module.exports = { postgre }
