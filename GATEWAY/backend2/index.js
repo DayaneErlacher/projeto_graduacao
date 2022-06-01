@@ -11,13 +11,14 @@ app.set('port', process.env.PORT || port);
 // MIDDLEWARES
 app.use(bodyParser.json());
 
+// TEMOS APENAS UM CAMINHO // APLICAÇÃO SIMPLES
+require('./api/routes/users.routes')(app);
+
 // Carrega o certificado e a key necessários para a configuração.
 const options = {
     key: fs.readFileSync('./config/keys/key.pem'),
     cert: fs.readFileSync('./config/keys/cert.pem')
 };
 
-require('./routes/users.routes')(app);
-  
 // Cria a instância do server e escuta na porta
 https.createServer(options, app).listen(port);

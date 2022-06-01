@@ -10,7 +10,7 @@ export default function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    getAllUser().then(data => setUser(data.data))
+    getAllUser().then(data => {setUser(data.data)})
     // getByIdUser(2).then(data => console.log(data.data))
   }, []);
 

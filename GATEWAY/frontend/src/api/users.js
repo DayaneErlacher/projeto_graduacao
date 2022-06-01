@@ -16,7 +16,6 @@ const registerUser = (data) => {
     data.user_password = CryptoJS.AES.encrypt(JSON.stringify(data.user_password), '_z!:jwS=,[9Ux9dE').toString();
     // var bytes = CryptoJS.AES.decrypt(ciphertext, '_z!:jwS=,[9Ux9dE');
     // var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    
     return (axios.post(`/api/users`, data));
 }
 
