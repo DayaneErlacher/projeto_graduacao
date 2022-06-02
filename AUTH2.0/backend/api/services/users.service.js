@@ -10,10 +10,9 @@ module.exports = {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        const getUserQuery = `SELECT * FROM users`;
+        const getUserQuery = `SELECT * FROM users ORDER BY id`;
 
         pgPool.query(getUserQuery, (response, err) => {
-            console.log(response.results.rows)
             if (err) reject(err)
             else resolve(response.results.rows);
         });
@@ -34,14 +33,12 @@ function getUser(id) {
 
 function add(user) {
     return new Promise((resolve, reject) => {
-        const getUserQuery = `INSERT INTO users(name, age, address, cpf) 
-        VALUES('${user.name}', ${user.age}, '${user.address}', '${user.cpf}')`
-        console.log(getUserQuery)
-        // pgPool.query(getUserQuery, (response, err) => {
-        //     console.log(response.results.rows)
-        //     if (err) reject(err)
-        //     else resolve(response.results.rows);
-        // });
+        const getUserQuery = `INSERT INTO users(username, user_password, age, address, cpf) 
+        VALUES('${user.username}', '${user.user_password}',  ${user.age}, '${user.address}', '${user.cpf}')`
+        pgPool.query(getUserQuery, (response, err) => {
+            if (err) reject(err)
+            else resolve(true);
+        });
     })
 }
 
@@ -59,7 +56,7 @@ function deleteUser(id) {
 
 function update(user) {
     return new Promise((resolve, reject) => {
-        const getUserQuery = `UPDATE users SET name = '${user.name}', age = ${user.age}, address = '${user.address}', cpf = '${user.cpf}' WHERE id = ${user.id}`
+        const getUserQuery = `UPDATE users SET username = '${user.username}', user_password = '${user.user_password}', age = ${user.age}, address = '${user.address}', cpf = '${user.cpf}' WHERE id = ${user.id}`
         console.log(getUserQuery)
         // pgPool.query(getUserQuery, (response, err) => {
         //     console.log(response.results.rows)

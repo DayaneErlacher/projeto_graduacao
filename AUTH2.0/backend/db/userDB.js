@@ -4,6 +4,7 @@ module.exports = (injectedPgPool) => {
     pgPool = injectedPgPool;
 
     return {
+        register,
         getUser,
         isValidUser,
     };
@@ -11,18 +12,18 @@ module.exports = (injectedPgPool) => {
 
 var crypto = require("crypto");
 
-// function register(username, password, cbFunc) {
-//     var shaPass = crypto.createHash("sha256").update(password).digest("hex");
+function register(username, password, cbFunc) {
+    var shaPass = crypto.createHash("sha256").update(password).digest("hex");
 
-//     const query = `INSERT INTO users (username, user_password) VALUES ('${username}', '${shaPass}')`;
+    const query = `INSERT INTO user_access (username, user_password) VALUES ('${username}', '${shaPass}')`;
 
-//     pgPool.query(query, cbFunc);
-// }
+    pgPool.query(query, cbFunc);
+}
 
 function getUser(username, password, cbFunc) {
     var shaPass = crypto.createHash("sha256").update(password).digest("hex");
 
-    const getUserQuery = `SELECT * FROM users WHERE username = '${username}' AND user_password = '${shaPass}'`;
+    const getUserQuery = `SELECT * FROM user_access WHERE username = '${username}' AND user_password = '${shaPass}'`;
 
     pgPool.query(getUserQuery, (response) => {
         cbFunc(
@@ -35,7 +36,7 @@ function getUser(username, password, cbFunc) {
 }
 
 function isValidUser(username, cbFunc) {
-    const query = `SELECT * FROM users WHERE username = '${username}'`;
+    const query = `SELECT * FROM user_access WHERE username = '${username}'`;
 
     const checkUsrcbFunc = (response) => {
         const isValidUser = response.results

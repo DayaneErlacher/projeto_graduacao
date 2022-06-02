@@ -1,11 +1,11 @@
 const Pool = require("pg").Pool;
 function query(queryString, cbFunc) {
   const pool = new Pool({
-    user: "pguser",
-    host: "localhost",
-    database: "database_pg",
-    password: "e=G*g#n2bFQx^YAy",
+    host: 'localhost',
     port: 5432,
+    database: 'database_pg',
+    user: 'client',
+    password: 'Y9!AH&pez1@nnyZD',
   });
   pool.query(queryString, (error, results) => {
     cbFunc(setResponse(error, results));
