@@ -1,6 +1,6 @@
 {
     "server": {
-      "port" : 10000, 
-      "USERS_API_URL": "https://localhost:8080"
+      "port" : 8084, 
+      "USERS_API_URL": "https://gateway-backend2:8083"
     }
 }

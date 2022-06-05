@@ -1,7 +1,7 @@
 const Pool = require("pg").Pool;
 function query(queryString, cbFunc) {
   const pool = new Pool({
-    host: 'localhost',
+    host: 'postgre-db',
     port: 5432,
     database: 'database_pg',
     user: 'client',
